@@ -1,13 +1,11 @@
 import streamlit as st
 from openai import OpenAI
+import base64
+import requests
 
 
 st.set_page_config(page_title="Image to Text", page_icon="📷")
 
-import streamlit as st
-from openai import OpenAI
-import base64
-import requests
 
 # display title    
 st.title("Image to Text!")
