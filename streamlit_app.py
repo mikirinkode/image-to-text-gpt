@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 
 
-st.set_page_config(page_title="Image to Text")
+st.set_page_config(page_title="Image to Text", page_icon="📷")
 
 import streamlit as st
 from openai import OpenAI
@@ -10,16 +10,21 @@ import base64
 import requests
 
 # display title    
-st.title("Explain me this image!")
+st.title("Image to Text!")
 st.write("This app uses GPT-4-vision-preview to generate text from an image. Upload an image and GPT-4 will try to explain what's in it.")
 
-st.info("To begin, please input your OpenAI API key. Remember to keep it secure, as you'll need it for future access. \n Don't have an OpenAI API key? No worries, let's go and get one for you: \n- Create an account at https://platform.openai.com/ \n- Go to https://platform.openai.com/api-keys \n- Click 'Create new secret key' \n- Copy the key and paste it below.")
+# NOTE: This is a temporary solution to hide the input API key section.
 
-# Set OpenAI API key
-st.subheader("Set OpenAI API key")
-openai_api_key = st.text_input("OpenAI API key:", key="openai_api_key", placeholder="Paste your key here (sk-...)")
-client = OpenAI(api_key = openai_api_key)
-st.info("Note: Your key is only used each time you upload an image and we don't store your key.")
+
+# st.info("To begin, please input your OpenAI API key. Remember to keep it secure, as you'll need it for future access. \n Don't have an OpenAI API key? No worries, let's go and get one for you: \n- Create an account at https://platform.openai.com/ \n- Go to https://platform.openai.com/api-keys \n- Click 'Create new secret key' \n- Copy the key and paste it below.")
+
+# # Set OpenAI API key
+# st.subheader("Set OpenAI API key")
+# openai_api_key = st.text_input("OpenAI API key:", key="openai_api_key", placeholder="Paste your key here (sk-...)")
+# client = OpenAI(api_key = openai_api_key)
+# st.info("Note: Your key is only used each time you upload an image and we don't store your key.")
+
+openai_api_key=st.secrets["OPENAI_API_KEY"]
 
 def get_text(image):
     # read image
